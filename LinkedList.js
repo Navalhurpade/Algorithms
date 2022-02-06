@@ -15,6 +15,13 @@ class LinkedList {
   }
   
   append(value) {
+    if (this.length === 0) {
+    const newNode = new Node(value,null, null);
+      this.head = newNode
+      this.tail = this.head
+      this.length++
+      return this
+    }
     const newNode = new Node(value,null, this.tail);
     this.tail.next = newNode;
     this.tail = newNode;
@@ -86,6 +93,26 @@ class LinkedList {
     return currentNode
   }
 
+  reverse() {
+    let nodes = []
+    let currentNode = this.head
+    
+    for (let i = 0; i < this.length; i++) {
+      nodes.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    nodes.reverse()
+    
+    this.head = {}
+    this.tail = {}
+    this.length = 0
+    console.log(nodes,);
+    this.print()
+    for (let i = 0; i < nodes.length; i++) {
+      this.append(nodes[i])
+    }
+  }
+
   // delete(index) {
   //   let count = 0;
   //   let currentNext = this.head;
@@ -117,11 +144,13 @@ ll.append('third')
 // ll.print();
 
 ll.prepend('start')
+ll.print()
+ll.reverse()
 
 // ll.print()
 
 
-ll.insert(1, "inserted")
-ll.insert(2, "inserted2")
-ll.remove(2)
+// ll.insert(1, "inserted")
+// ll.insert(2, "inserted2")
+// ll.remove(2)
 ll.print()
